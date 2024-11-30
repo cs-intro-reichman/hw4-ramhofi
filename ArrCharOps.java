@@ -45,6 +45,9 @@ public class ArrCharOps {
      */
     public static boolean equals(char[] arr1, char[] arr2) {
         // Replace the following statement with your code
+        if (arr1 == null || arr2 == null) {
+           return false; 
+        }
         if (arr1.length != arr2.length) {
           return false;  
         }
@@ -140,9 +143,10 @@ public class ArrCharOps {
      */
     public static long hashCode(char[] arr) {
         // Replace the following statement with your code
-        if (arr.length == 0) {
-            return 0;
+        if (arr == null || arr.length == 0) {
+          return 0;  
         }
+
         long hash = 0;
         int n = arr.length;
 
@@ -179,7 +183,7 @@ public class ArrCharOps {
      */
     public static int compareTo(String str1, String str2) {
         // Replace the following statement with your code
-        if (str1 == null && str2 == null) {
+        if (str1 == null || str2 == null) {
           return -2;  
         }
             int minLength = Math.min(str1.length(), str2.length());
