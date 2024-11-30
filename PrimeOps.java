@@ -2,13 +2,13 @@
 public class PrimeOps {
     public static void main(String args[]) {
         // Define the range
-        int range = 100; // Example: Prime numbers up to 100
-        
+        int range = 100; // Change this value for other test cases
+
         // Get the primes
         int[] primes = sieve(range);
 
-        // Print the primes (optional)
-        System.out.print("Primes up to " + range + ": ");
+        // Print the primes
+        System.out.print("Prime numbers up to " + range + ": ");
         for (int prime : primes) {
             System.out.print(prime + " ");
         }
@@ -18,11 +18,11 @@ public class PrimeOps {
         int primeCount = primes.length;
 
         // Calculate the percentage
-        double percentage = (primeCount * 100.0) / (range + 1); // range + 1 because it includes 0
+        double percentage = (primeCount * 100.0) / (range - 1); // Count between 2 and range
 
         // Print the results at the end
-        System.out.println("There are " + primeCount + " primes between 2 and " + range + " (" + percentage + "% are primes)");
-        // System.out.println("Percentage of primes in the range [0, " + range + "]: " + percentage + "%");
+        System.out.println("There are " + primeCount + " primes between 2 and " + range +
+                " (" + String.format("%.0f", percentage) + "% are primes)");
     }
 
     // Returns an array of all prime numbers up to any given number.
@@ -32,7 +32,7 @@ public class PrimeOps {
         int sum = 0;
 
         // Count primes
-        for (int j = 0; j <= n; j++) {
+        for (int j = 2; j <= n; j++) { // Start from 2 since 0 and 1 are not primes
             if (isPrime(j)) {
                 sum++;
             }
@@ -40,7 +40,7 @@ public class PrimeOps {
 
         // Create array for primes
         int[] newArr = new int[sum];
-        for (int i = 0; i <= n; i++) {
+        for (int i = 2; i <= n; i++) { // Start from 2 since 0 and 1 are not primes
             if (isPrime(i)) {
                 newArr[index] = i;
                 index++;
@@ -53,7 +53,7 @@ public class PrimeOps {
     // Checks if a number is prime
     public static boolean isPrime(int n) {
         if (n <= 1) return false;
-        for (int i = 2; i < n; i++) {
+        for (int i = 2; i <= Math.sqrt(n); i++) { // Optimize by checking up to sqrt(n)
             if (n % i == 0) {
                 return false;
             }
@@ -61,3 +61,4 @@ public class PrimeOps {
         return true;
     }
 }
+
