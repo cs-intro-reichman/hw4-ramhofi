@@ -37,7 +37,7 @@ public class ArrCharOps {
      */
     public static char charAt(char[] arr, int index) {
         // Replace the following statement with your code
-        return 0;
+        return arr[index];
     }
 
     /** If the two arrays have the same value in every index, 
@@ -183,9 +183,12 @@ public class ArrCharOps {
      */
     public static int compareTo(String str1, String str2) {
         // Replace the following statement with your code
-        if (str1 == null || str2 == null) {
-          return -2;  
+        if (str1 == null && str2 == null) {
+          return 0;  
         }
+            if (str1 == null || str2 == null) {
+               return -2; 
+            }
             int minLength = Math.min(str1.length(), str2.length());
             for (int i = 0; i < minLength; i++) {
                 char ch1 = str1.charAt(i);
