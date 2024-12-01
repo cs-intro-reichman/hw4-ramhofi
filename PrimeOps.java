@@ -8,7 +8,7 @@ public class PrimeOps {
 
         // Parse the range from the first command-line argument
         int range = Integer.parseInt(args[0]);
-        double counter =0;
+        double counter = 0;
         System.out.println("Prime nembers up to " + range + ":");
         for(int i = 2; i <= range; i++) {
             if (isPrime(i)) {
@@ -16,6 +16,9 @@ public class PrimeOps {
                 counter++;
             }
         }
+        int percentege = (int) ((counter / range) * 100);
+        System.out.println("There are " + (int) counter + " primes between 2 and " + range + " (" + percentege + "% are primes");
+    }
 
         public static boolean isPrime(int check) {
             boolean result = true;
