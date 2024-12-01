@@ -17,7 +17,7 @@ public class PrimeOps {
             }
         }
         int percentege = (int) ((counter / range) * 100);
-        System.out.println("There are " + (int) counter + " primes between 2 and " + range + " (" + percentege + "% are primes");
+        System.out.println("There are " + (int) counter + " primes between 2 and " + range + " (" + percentege + "% are primes)");
     }
 
         public static boolean isPrime(int check) {
