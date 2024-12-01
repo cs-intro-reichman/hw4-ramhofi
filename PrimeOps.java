@@ -1,64 +1,57 @@
-// Represents algebraic operations as functions.
 public class PrimeOps {
-    public static void main(String args[]) {
-        // Define the range
-        int range = 100; // Change this value for other test cases
+    public static void main(String[] args) {
+        // Check if the user provided an argument
+        //if (args.length == 0) {
+           // System.out.println("Please provide a number as a command-line argument.");
+           // return;
+       // }
 
-        // Get the primes
-        int[] primes = sieve(range);
+        // Parse the range from the first command-line argument
+        int range = Integer.parseInt(args[0]);
 
-        // Print the primes
-        System.out.print("Prime numbers up to " + range + ": ");
-        for (int prime : primes) {
-            System.out.print(prime + " ");
+        // Handle invalid range
+        if (range < 2) {
+            System.out.println("Please enter a number greater than or equal to 2.");
+            return;
         }
-        System.out.println(); // Newline for clarity
 
-        // Count the primes
-        int primeCount = primes.length;
+        // Create an array to mark prime numbers
+        boolean[] isPrime = new boolean[range + 1];
+        for (int i = 2; i <= range; i++) {
+            isPrime[i] = true; // Assume all numbers are prime initially
+        }
 
-        // Calculate the percentage
-        double percentage = (primeCount * 100.0) / (range - 1); // Count between 2 and range
+        // Implement the sieve logic manually
+        for (int p = 2; p * p <= range; p++) {
+            if (isPrime[p]) { // If p is still marked as prime
+                for (int i = p * p; i <= range; i += p) {
+                    isPrime[i] = false; // Mark multiples of p as not prime
+                }
+            }
+        }
 
-        // Print the results at the end
+        // Print the primes and count them
+        System.out.println("Prime numbers up to " + range + ":");
+        int primeCount = 0;
+        for (int i = 2; i <= range; i++) {
+            if (isPrime[i]) {
+                System.out.println(i); // Print each prime number on a new line
+                primeCount++; // Increment the count
+            }
+        }
+
+        // Total numbers between 2 and the range
+        double totalNumbers = range; // Total numbers in the range [2, n]
+    
+
+        // Calculate the percentage manually and take the floor
+        double rawPercentage = (primeCount * 100.0) / totalNumbers;
+     
+        int flooredPercentage = (int) rawPercentage; // Take the floor of the raw percentage
+
+        // Print the results in the expected format
         System.out.println("There are " + primeCount + " primes between 2 and " + range +
-                " (" + String.format("%.0f", percentage) + "% are primes)");
-    }
-
-    // Returns an array of all prime numbers up to any given number.
-    // Assumption: n is nonnegative.
-    public static int[] sieve(int n) {
-        int index = 0;
-        int sum = 0;
-
-        // Count primes
-        for (int j = 2; j <= n; j++) { // Start from 2 since 0 and 1 are not primes
-            if (isPrime(j)) {
-                sum++;
-            }
-        }
-
-        // Create array for primes
-        int[] newArr = new int[sum];
-        for (int i = 2; i <= n; i++) { // Start from 2 since 0 and 1 are not primes
-            if (isPrime(i)) {
-                newArr[index] = i;
-                index++;
-            }
-        }
-
-        return newArr;
-    }
-
-    // Checks if a number is prime
-    public static boolean isPrime(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i <= Math.sqrt(n); i++) { // Optimize by checking up to sqrt(n)
-            if (n % i == 0) {
-                return false;
-            }
-        }
-        return true;
+                " (" + flooredPercentage + "% are primes)");
+       
     }
 }
-
