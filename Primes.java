@@ -1,4 +1,4 @@
-public class PrimeOps {
+public class Primes {
     public static void main(String[] args) {
         // Check if the user provided an argument
         //if (args.length == 0) {
