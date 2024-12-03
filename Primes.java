@@ -9,7 +9,7 @@ public class Primes {
         // Parse the range from the first command-line argument
         int range = Integer.parseInt(args[0]);
         double counter = 0;
-        System.out.println("Prime nembers up to " + range + ":");
+        System.out.println("Prime numbers up to " + range + ":");
         for(int i = 2; i <= range; i++) {
             if (isPrime(i)) {
                 System.out.println(i);
