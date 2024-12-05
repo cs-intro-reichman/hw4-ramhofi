@@ -24,11 +24,11 @@ public class KeywordsDetector {
         // Replace this comment with your code
 
         boolean isPrinted [] = new boolean[sentences.length];
-       for (int i = keywords.length -1 ; i >= 0; i--) {
-        for (int j = 0; j < sentences.length; j++) {
-            if (MyString.contains(MyString.lowerCase(sentences[j]), MyString.lowerCase(keywords[i])) &&  !isPrinted[j]) {
-                isPrinted[j] = true;
-               System.out.println(sentences[j]); 
+       for (int i = 0; i < sentences.length; i++) {
+        for (int j = 0; j < keywords.length; j++) {
+            if (MyString.contains(MyString.lowerCase(sentences[i]), MyString.lowerCase(keywords[j])) &&  !isPrinted[i]) {
+                isPrinted[i] = true;
+               System.out.println(sentences[i]); 
             }
         }
        }
