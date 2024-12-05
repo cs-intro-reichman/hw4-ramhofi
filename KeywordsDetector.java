@@ -23,7 +23,7 @@ public class KeywordsDetector {
     public static void detectAndPrint(String[] sentences, String[] keywords) {
         // Replace this comment with your code
         boolean isPrinted [] = new boolean[sentences.length];
-       for (int i = 0; i < keywords.length; i++) {
+       for (int i = keywords.length -1 ; i >= 0; i--) {
         for (int j = 0; j < sentences.length; j++) {
             if (MyString.contains(sentences[j], keywords[i]) &&  !isPrinted[j]) {
                 isPrinted[j] = true;
